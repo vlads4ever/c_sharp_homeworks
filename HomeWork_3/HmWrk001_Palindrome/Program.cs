@@ -25,8 +25,21 @@ if (number.Length != 5)
 }
 
 bool palindromeFlag = true;             // Вводим переменную флаг для признака полиндрома
+int indexStart = 0;
 int indexLast = number.Length - 1;      // Вычисляем индекс последней "цифры" в строке
 
+while (indexStart < indexLast)
+{
+    if (number[indexStart] != number[indexLast])
+    {
+        palindromeFlag = false;
+        break;
+    }   
+    indexStart++;
+    indexLast--;
+}
+
+/* Второй вариент цикла
 for (int i = 0; i <= indexLast; i++)
 {    
     if (number[i] == number[indexLast - i])
@@ -38,7 +51,7 @@ for (int i = 0; i <= indexLast; i++)
         palindromeFlag = false;
         break;
     }
-}
+} */
 
 if (palindromeFlag == true)
 {
