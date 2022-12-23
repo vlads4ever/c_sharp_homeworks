@@ -28,6 +28,7 @@ bool palindromeFlag = true;             // Вводим переменную ф�
 int indexStart = 0;
 int indexLast = number.Length - 1;      // Вычисляем индекс последней "цифры" в строке
 
+// Первый вариант цикла
 while (indexStart < indexLast)
 {
     if (number[indexStart] != number[indexLast])
@@ -42,15 +43,11 @@ while (indexStart < indexLast)
 /* Второй вариент цикла
 for (int i = 0; i <= indexLast; i++)
 {    
-    if (number[i] == number[indexLast - i])
-    {
-        palindromeFlag = true;
-    }
-    else
+    if (number[i] != number[indexLast - i])
     {
         palindromeFlag = false;
         break;
-    }
+    }    
 } */
 
 if (palindromeFlag == true)
