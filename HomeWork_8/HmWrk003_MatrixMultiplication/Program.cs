@@ -48,13 +48,8 @@ int GetElement(int i, int j, int[,] firstMatrix, int[,] secondMatrix)
 
 int[,] GetMatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix)
 {
-    int rowsCount = 0;
-    if (firstMatrix.GetLength(0) < secondMatrix.GetLength(0)) rowsCount = firstMatrix.GetLength(0);
-    else rowsCount = secondMatrix.GetLength(0);
-
-    int colsCount = 0;
-    if (firstMatrix.GetLength(1) < secondMatrix.GetLength(1)) rowsCount = firstMatrix.GetLength(1);
-    else rowsCount = secondMatrix.GetLength(1);
+    int rowsCount = firstMatrix.GetLength(0);
+    int colsCount = secondMatrix.GetLength(1);
 
     int[,] resultMatrix = new int[rowsCount, colsCount];
     
@@ -69,29 +64,26 @@ int[,] GetMatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix)
     return resultMatrix;     
 }
 
+// Правило:
+// Для осуществления перемножения двух матриц, колличество столбцов первой матрицы 
+// должно быть равно количеству строк второй матрицы.
 
+// Строки и столбцы первой матрицы
 const int FIRST_ROWS = 3;
 const int FIRST_COLUMNS = 3;
+
+// Строки и столбцы второй матрицы
 const int SECOND_ROWS = 3;
 const int SECOND_COLUMNS = 2;
+
 const int LEFT_RANGE = 0;
 const int RIGHT_RANGE = 10;
 
-if (FIRST_COLUMNS == SECOND_ROWS)
-{
-    int[,] firstMatrix = GetRandomMatrix(FIRST_ROWS, FIRST_COLUMNS, LEFT_RANGE, RIGHT_RANGE);
-    int[,] secondMatrix = GetRandomMatrix(SECOND_ROWS, SECOND_COLUMNS, LEFT_RANGE, RIGHT_RANGE);
-    PrintMatrix(firstMatrix);
-    Console.WriteLine("****************************");
-    PrintMatrix(secondMatrix);
-    int[,] multiplMatrix = GetMatrixMultiplication(firstMatrix, secondMatrix);
-    Console.WriteLine("============================");
-    PrintMatrix(multiplMatrix);
-}
-else
-{
-    Console.WriteLine("Матрицы нельзя перемножить.");
-    Console.WriteLine("Колличество столбцов первой матрицы не равно количеству строк второй матрицы.");
-} 
-
-
+int[,] firstMatrix = GetRandomMatrix(FIRST_ROWS, FIRST_COLUMNS, LEFT_RANGE, RIGHT_RANGE);
+int[,] secondMatrix = GetRandomMatrix(SECOND_ROWS, SECOND_COLUMNS, LEFT_RANGE, RIGHT_RANGE);
+PrintMatrix(firstMatrix);
+Console.WriteLine("****************************");
+PrintMatrix(secondMatrix);
+int[,] multiplMatrix = GetMatrixMultiplication(firstMatrix, secondMatrix);
+Console.WriteLine("============================");
+PrintMatrix(multiplMatrix);
