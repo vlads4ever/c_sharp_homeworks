@@ -6,26 +6,27 @@
 10 09 08 07 */
 
 
-int[,] GetSpiralRandomMatrix(int rows, int columns, int leftRange, int rightRange)
+int[,] GetSpiralRandomMatrix(int rows, int columns)
 {
     int[,] matrix = new int[rows, columns];
     int startRowIndex = 0;
     int endRowIndex = rows - 1;
     int startColIndex = 0;
     int endColIndex = columns - 1;
-        
+    int value = 1;
+
     while (true)
     {       
         // Заполняем круг
         for (int j = startColIndex; j <= endColIndex; j++)
         {            
-            matrix[startRowIndex, j] = new Random().Next(leftRange, rightRange + 1);            
+            matrix[startRowIndex, j] = value++;            
         }
         startRowIndex++;
         
         for (int i = startRowIndex; i <= endRowIndex; i++)
         {            
-            matrix[i, endColIndex] = new Random().Next(leftRange, rightRange + 1);            
+            matrix[i, endColIndex] = value++;            
         }
         endColIndex--;
         
@@ -33,7 +34,7 @@ int[,] GetSpiralRandomMatrix(int rows, int columns, int leftRange, int rightRang
         {
             for (int j = endColIndex; j >= startColIndex; j--)
             {            
-                matrix[endRowIndex, j] = new Random().Next(leftRange, rightRange + 1);            
+                matrix[endRowIndex, j] = value++;            
             }
             endRowIndex--;
         }        
@@ -43,7 +44,7 @@ int[,] GetSpiralRandomMatrix(int rows, int columns, int leftRange, int rightRang
         {
            for (int i = endRowIndex; i >= startRowIndex; i--)
             {            
-                matrix[i, startColIndex] = new Random().Next(leftRange, rightRange + 1);            
+                matrix[i, startColIndex] = value++;            
             }
             startColIndex++; 
         }
@@ -53,22 +54,21 @@ int[,] GetSpiralRandomMatrix(int rows, int columns, int leftRange, int rightRang
     return matrix;
 }
 
-void PrintMatrix(int[,] matrix)
+void SpecialPrintMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write(matrix[i, j] + " ");
+            if (matrix[i,j] < 10) Console.Write("0" + matrix[i, j] + " ");
+            else Console.Write(matrix[i, j] + " ");
         }
         Console.WriteLine();
     }
 }
 
-const int ROWS = 5;
-const int COLUMNS = 3;
-const int LEFT_RANGE = 1;
-const int RIGHT_RANGE = 9;
+const int ROWS = 4;
+const int COLUMNS = 4;
 
-int[,] spiralMatrix = GetSpiralRandomMatrix(ROWS, COLUMNS, LEFT_RANGE, RIGHT_RANGE);
-PrintMatrix(spiralMatrix);
+int[,] spiralMatrix = GetSpiralRandomMatrix(ROWS, COLUMNS);
+SpecialPrintMatrix(spiralMatrix);
