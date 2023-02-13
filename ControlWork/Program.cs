@@ -45,15 +45,21 @@ void PrintArray(string[] textArray)
     }
 }
 
+// Задаем исходный массив
 string[] startArray = {":-)", "Hello", "world", "!", "Bob", "final"};
 
+// Демонстрируем в консоли все элементы исходного массива
 Console.WriteLine();
 Console.WriteLine("This is start array:");
 PrintArray(startArray);
 
+// Получаем количество удовлетворяющих условию элементов в исходном массиве
 int countSymbol = GetThreeSymbolCount(startArray);
+
+// Инициализируем и наполняем "подходящими" элементами новый массив
 string[] finalArray = GetThreeSymbolArray(startArray, countSymbol);
 
+// Организуем вывод элементов результирующего массива
 Console.WriteLine("============================");
 Console.WriteLine("This is final array:");
 PrintArray(finalArray);
