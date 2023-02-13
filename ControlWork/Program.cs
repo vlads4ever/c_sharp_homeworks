@@ -1,4 +1,16 @@
-﻿int GetThreeSymbolCount(string[] textArray)
+﻿/* Контрольная задача:
+
+Написать программу, которая из имеющегося массива строк формирует массив из строк, длина которых меньше
+либо равна 3 символа. Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения
+алгоритма. При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно
+массивами.
+
+Примеры:
+["hello", "2", "world", ":-)"] -> ["2", ":-)"]
+["Russia", "Kazan", "Denmark"] -> []
+ */
+
+int GetThreeSymbolCount(string[] textArray)
 {
     int count = 0;
     for (int i = 0; i < textArray.Length; i++)
@@ -29,7 +41,7 @@ void PrintArray(string[] textArray)
         {
             Console.Write($"{textArray[i]}, ");
         }
-        else Console.WriteLine($"{textArray[i]}");        
+        else Console.WriteLine(textArray[i]);        
     }
 }
 
