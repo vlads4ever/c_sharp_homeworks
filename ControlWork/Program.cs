@@ -33,6 +33,17 @@ string[] GetThreeSymbolArray(string[] textArray, int count)
     return threeSymbolArray;
 }
 
+string[] GetThreeSymbolArrayOverList(string[] textArray)
+{    
+    List<string> threeSymbolList = new List<string>();    
+    for (int i = 0; i < textArray.Length; i++)
+    {
+        if (textArray[i].Length <= 3) threeSymbolList.Add(textArray[i]);        
+    }
+
+    return threeSymbolList.ToArray();
+}
+
 void PrintArray(string[] textArray)
 {
     for (int i = 0; i < textArray.Length; i++)
@@ -53,14 +64,27 @@ Console.WriteLine();
 Console.WriteLine("This is start array:");
 PrintArray(startArray);
 
+
+// Первый способ:
+// Инициализируем и наполняем "подходящими" элементами новый массив
+// (при этом способе не требуется находить длину массива)
+string[] firstFinalArray = GetThreeSymbolArrayOverList(startArray);
+
+
+// Второй способ:
 // Получаем количество удовлетворяющих условию элементов в исходном массиве
 int countSymbol = GetThreeSymbolCount(startArray);
-
 // Инициализируем и наполняем "подходящими" элементами новый массив
-string[] finalArray = GetThreeSymbolArray(startArray, countSymbol);
+string[] secondFinalArray = GetThreeSymbolArray(startArray, countSymbol);
 
-// Организуем вывод элементов результирующего массива
+
+
+// Организуем вывод элементов результирующего массива, полученного через список
 Console.WriteLine("============================");
-Console.WriteLine("This is final array:");
-PrintArray(finalArray);
+Console.WriteLine("This is final array over list:");
+PrintArray(firstFinalArray);
 
+// Организуем вывод элементов результирующего массива, полученного двумя циклами
+Console.WriteLine("============================");
+Console.WriteLine("This is second final array over two cycles:");
+PrintArray(secondFinalArray);
